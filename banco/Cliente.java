@@ -44,4 +44,14 @@ public class Cliente {
         this.tempoEspera = tempoEspera;
     }
 
+    private long tempoAtendimento;
+
+    public long getTempoAtendimento() {
+        return tempoAtendimento;
+    }
+
+    public void setTempoAtendimento(long tempoAtendimento) {
+        this.tempoAtendimento = tempoAtendimento;
+    }
+
 }

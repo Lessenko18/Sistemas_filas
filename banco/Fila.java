@@ -8,7 +8,6 @@ public class Fila {
     private final Queue<Cliente> clientes = new LinkedList<>();
     private final int capacidade;
 
-    // Métricas
     private long somaTemposEspera = 0;
     private long maiorTempoEspera = 0;
     private int totalAtendidos = 0;
