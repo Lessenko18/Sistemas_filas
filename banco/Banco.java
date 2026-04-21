@@ -6,35 +6,33 @@ public class Banco {
 
     static final int ESCALA = 5;
 
-    static final int TEMPO_SIMULACAO = 7200; // segundos (11h as 13h)
+    static final int TEMPO_SIMULACAO = 7200;
     static final int CHEGADA_MIN = 5;
     static final int CHEGADA_MAX = 50;
-    static final int META_ESPERA = 120; // segundos simulados
+    static final int META_ESPERA = 120;
     static final int MAX_ATENDENTES = 10;
 
     public static void main(String[] args) throws InterruptedException {
         int melhorN = -1;
 
         for (int n = 1; n <= MAX_ATENDENTES; n++) {
-            System.out.println("\n============================================");
-            System.out.println(" Simulacao com " + n + " atendente(s)");
-            System.out.println("============================================");
+            System.out.println("\n--- " + n + " atendentes ---");
 
             double mediaEspera = rodarSimulacao(n);
 
-            System.out.printf(" Tempo medio de espera: %.1f segundos%n", mediaEspera);
+            System.out.printf("espera media: %.1f s%n", mediaEspera);
 
             if (mediaEspera <= META_ESPERA && melhorN == -1) {
                 melhorN = n;
-                System.out.println(" >>> META ATINGIDA com " + n + " atendente(s)!");
+                System.out.println("meta atingida com " + n + " atendente(s)");
             }
         }
 
-        System.out.println("\n============================================");
+        System.out.println();
         if (melhorN != -1) {
-            System.out.println("Numero minimo de atendentes necessarios: " + melhorN);
+            System.out.println("minimo atendentes: " + melhorN);
         } else {
-            System.out.println("Nenhuma configuracao atingiu a meta dentro de " + MAX_ATENDENTES + " atendentes.");
+            System.out.println("nenhuma config atingiu a meta com ate " + MAX_ATENDENTES + " atendentes");
         }
     }
 
@@ -69,7 +67,7 @@ public class Banco {
         }, "Gerador");
 
         gerador.start();
-        gerador.join(); 
+        gerador.join();
 
         long timeout = System.currentTimeMillis() + 30_000;
         while (!naoAtendidos.estaVazia() && System.currentTimeMillis() < timeout) {
@@ -108,12 +106,12 @@ public class Banco {
 
         double leadTime = mediaEsperaSim + mediaAtendimento;
 
-        System.out.printf(" Clientes que entraram na fila:  %d%n", totalAtendidos);
-        System.out.printf(" Clientes atendidos (throughput): %d%n", totalServidos);
-        System.out.printf(" Maior tempo de espera:          %.1f s%n", maiorEsperaSim);
-        System.out.printf(" Maior tempo de atendimento:     %d s%n", maiorAtendimento);
-        System.out.printf(" Tempo medio de atendimento:     %.1f s%n", mediaAtendimento);
-        System.out.printf(" Lead time medio (espera+atend): %.1f s%n", leadTime);
+        System.out.printf("na fila: %d%n", totalAtendidos);
+        System.out.printf("atendidos: %d%n", totalServidos);
+        System.out.printf("maior espera: %.1f s%n", maiorEsperaSim);
+        System.out.printf("maior atendimento: %d s%n", maiorAtendimento);
+        System.out.printf("media atendimento: %.1f s%n", mediaAtendimento);
+        System.out.printf("lead time: %.1f s%n", leadTime);
 
         return mediaEsperaSim;
     }
