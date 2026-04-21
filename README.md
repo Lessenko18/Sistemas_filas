@@ -60,15 +60,15 @@ java banco.Banco
 ## Exemplo de saída
 
 ```
-============================================
- Simulacao com 3 atendente(s)
-============================================
- Clientes que entraram na fila:  142
- Clientes atendidos (throughput): 142
- Maior tempo de espera:          187.4 s
- Maior tempo de atendimento:     119 s
- Tempo medio de atendimento:     74.3 s
- Lead time medio (espera+atend): 189.1 s
- Tempo medio de espera: 114.8 segundos
- >>> META ATINGIDA com 3 atendente(s)!
+--- 3 atendentes ---
+na fila: 142
+atendidos: 142
+maior espera: 187.4 s
+maior atendimento: 119 s
+media atendimento: 74.3 s
+lead time: 189.1 s
+espera media: 114.8 s
+meta atingida com 3 atendente(s)
+
+minimo atendentes: 3
 ```
